@@ -18,13 +18,12 @@ async function run() {
     try {
         const bookCollection = client.db('eceBooks').collection('books');
 
-        // const user = {
-        //     name: 'someone',
-        //     comment: 'nice'
-        // }
-
-        // const result = await bookCollection.insertOne(user);
-        // console.log(result);
+        app.post('/users', async (req, res) => {
+            const user = req.body;
+            console.log(user);
+            const result = await bookCollection.insertOne(user);
+            res.send(result);
+        })
 
     }
     finally {
