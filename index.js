@@ -18,6 +18,15 @@ async function run() {
     try {
         const bookCollection = client.db('eceBooks').collection('books');
 
+
+        app.get('/users', async (req, res) => {
+            const query = {};
+            const cursor = bookCollection.find(query);
+            const users = await cursor.toArray();
+            res.send(users);
+        })
+
+
         app.post('/users', async (req, res) => {
             const user = req.body;
             console.log(user);
