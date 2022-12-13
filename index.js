@@ -1,48 +1,35 @@
 const express = require('express');
 const cors = require('cors');
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
+require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 5000;
+
 
 // middlewares
 app.use(cors());
 app.use(express.json());
 
 
-
-const uri = "mongodb+srv://ece-books:nAQs2gPHg033QcmB@cluster0.pqumcav.mongodb.net/?retryWrites=true&w=majority";
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.pqumcav.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+
+// console.log(uri);
 
 
 async function run() {
     try {
-        const bookCollection = client.db('eceBooks').collection('books');
+
+        const bookCollectionOne = client.db('eceBooks').collection('oneOne');
 
 
-        app.get('/users', async (req, res) => {
+        app.get('/firstsem', async (req, res) => {
             const query = {};
-            const cursor = bookCollection.find(query);
-            const users = await cursor.toArray();
-            res.send(users);
+            const cursor = bookCollectionOne.find(query);
+            const oneOneBooks = await cursor.toArray();
+            res.send(oneOneBooks);
         })
 
-
-        app.post('/users', async (req, res) => {
-            const user = req.body;
-            console.log(user);
-            const result = await bookCollection.insertOne(user);
-            res.send(result);
-        })
-
-
-        app.delete('/users/:id', async (req, res) => {
-            const id = req.params.id;
-
-            const query = { _id: ObjectId(id) }
-            const result = await bookCollection.deleteOne(query);
-            console.log(result);
-            res.send(result);
-        })
 
     }
     finally {
