@@ -21,13 +21,69 @@ async function run() {
     try {
 
         const bookCollectionOne = client.db('eceBooks').collection('oneOne');
+        const bookCollectionTwo = client.db('eceBooks').collection('oneTwo');
+        const bookCollectionThree = client.db('eceBooks').collection('twoOne');
+        const bookCollectionFour = client.db('eceBooks').collection('twoTwo');
+        const bookCollectionFive = client.db('eceBooks').collection('threeOne');
+        const bookCollectionSix = client.db('eceBooks').collection('threeTwo');
+        const bookCollectionSeven = client.db('eceBooks').collection('fourOne');
+        const bookCollectionEight = client.db('eceBooks').collection('fourTwo');
 
 
-        app.get('/firstsem', async (req, res) => {
+        app.get('/one_one', async (req, res) => {
             const query = {};
             const cursor = bookCollectionOne.find(query);
             const oneOneBooks = await cursor.toArray();
             res.send(oneOneBooks);
+        })
+
+        app.get('/one_two', async (req, res) => {
+            const query = {};
+            const cursor = bookCollectionTwo.find(query);
+            const oneTwoBooks = await cursor.toArray();
+            res.send(oneTwoBooks);
+        })
+
+        app.get('/two_one', async (req, res) => {
+            const query = {};
+            const cursor = bookCollectionThree.find(query);
+            const twoOneBooks = await cursor.toArray();
+            res.send(twoOneBooks);
+        })
+
+        app.get('/two_two', async (req, res) => {
+            const query = {};
+            const cursor = bookCollectionFour.find(query);
+            const twoTwoBooks = await cursor.toArray();
+            res.send(twoTwoBooks);
+        })
+
+        app.get('/three_one', async (req, res) => {
+            const query = {};
+            const cursor = bookCollectionFive.find(query);
+            const threeOneBooks = await cursor.toArray();
+            res.send(threeOneBooks);
+        })
+
+        app.get('/three_two', async (req, res) => {
+            const query = {};
+            const cursor = bookCollectionSix.find(query);
+            const threeTwoBooks = await cursor.toArray();
+            res.send(threeTwoBooks);
+        })
+
+        app.get('/four_one', async (req, res) => {
+            const query = {};
+            const cursor = bookCollectionSeven.find(query);
+            const fourOneBooks = await cursor.toArray();
+            res.send(fourOneBooks);
+        })
+
+        app.get('/four_two', async (req, res) => {
+            const query = {};
+            const cursor = bookCollectionEight.find(query);
+            const fourTwoBooks = await cursor.toArray();
+            res.send(fourTwoBooks);
         })
 
 
