@@ -1,2 +1,11 @@
 node_modules
 .env
+.vercel
+one_one.json
+one_two.json
+two_one.json
+two_two.json
+three_one.json
+three_two.json
+four_one.json
+four_two.json
