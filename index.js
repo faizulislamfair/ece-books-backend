@@ -29,6 +29,25 @@ async function run() {
         const bookCollectionSeven = client.db('eceBooks').collection('fourOne');
         const bookCollectionEight = client.db('eceBooks').collection('fourTwo');
 
+        const adminAccounts = client.db('eceBooks').collection('admins');
+
+
+
+        app.get('/admins', async (req, res) => {
+            const query = {};
+            const cursor = adminAccounts.find(query);
+            const admins = await cursor.toArray();
+            res.send(admins);
+        })
+
+
+        app.get('/admins/:email', async (req, res) => {
+            const email = req.params.email;
+            const query = { email };
+            const user = await adminAccounts.findOne(query);
+            res.send({ isAdmin: user?.role === 'Admin' });
+        })
+
 
         app.get('/one_one', async (req, res) => {
             const query = {};
@@ -99,7 +118,7 @@ run().catch(err => console.log(err));
 
 
 app.get('/', (req, res) => {
-    res.send('<h1 style="text-align: center">Ece Books Server is Running!</h1>');
+    res.send('<h1 style="text-align: center">ECE Books Server is Running!</h1>');
 })
 
 
