@@ -91,6 +91,14 @@ async function run() {
             res.send(result);
         })
 
+        app.delete('/one_two/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) }
+            const result = await bookCollectionTwo.deleteOne(query);
+            console.log(result);
+            res.send(result);
+        })
+
 
 
 
@@ -106,6 +114,14 @@ async function run() {
         app.post('/two_one', async (req, res) => {
             const two_one = req.body;
             const result = await bookCollectionThree.insertOne(two_one);
+            res.send(result);
+        })
+
+        app.delete('/two_one/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) }
+            const result = await bookCollectionThree.deleteOne(query);
+            console.log(result);
             res.send(result);
         })
 
@@ -125,6 +141,14 @@ async function run() {
             res.send(result);
         })
 
+        app.delete('/two_two/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) }
+            const result = await bookCollectionFour.deleteOne(query);
+            console.log(result);
+            res.send(result);
+        })
+
 
 
 
@@ -138,6 +162,14 @@ async function run() {
         app.post('/three_one', async (req, res) => {
             const three_one = req.body;
             const result = await bookCollectionFive.insertOne(three_one);
+            res.send(result);
+        })
+
+        app.delete('/three_one/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) }
+            const result = await bookCollectionFive.deleteOne(query);
+            console.log(result);
             res.send(result);
         })
 
@@ -158,6 +190,14 @@ async function run() {
             res.send(result);
         })
 
+        app.delete('/three_two/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) }
+            const result = await bookCollectionSix.deleteOne(query);
+            console.log(result);
+            res.send(result);
+        })
+
 
 
 
@@ -174,6 +214,14 @@ async function run() {
             res.send(result);
         })
 
+        app.delete('/four_one/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) }
+            const result = await bookCollectionSeven.deleteOne(query);
+            console.log(result);
+            res.send(result);
+        })
+
 
 
 
@@ -187,6 +235,14 @@ async function run() {
         app.post('/four_two', async (req, res) => {
             const four_two = req.body;
             const result = await bookCollectionEight.insertOne(four_two);
+            res.send(result);
+        })
+
+        app.delete('/four_two/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) }
+            const result = await bookCollectionEight.deleteOne(query);
+            console.log(result);
             res.send(result);
         })
 
