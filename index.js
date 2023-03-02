@@ -126,6 +126,30 @@ async function run() {
             res.send(result);
         })
 
+        app.get('/one_two/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) };
+            const book = await bookCollectionTwo.findOne(query);
+            res.send(book);
+        })
+
+        app.put('/one_two/:id', async (req, res) => {
+            const id = req.params.id;
+            const filter = { _id: ObjectId(id) };
+            const book = req.body;
+            const option = { upsert: true };
+            const updatedBook = {
+                $set: {
+                    image: book.image,
+                    name: book.name,
+                    book_url: book.book_url
+                }
+            }
+
+            const result = await bookCollectionTwo.updateOne(filter, updatedBook, option);
+            res.send(result);
+        })
+
 
 
 
@@ -149,6 +173,30 @@ async function run() {
             const query = { _id: ObjectId(id) }
             const result = await bookCollectionThree.deleteOne(query);
             console.log(result);
+            res.send(result);
+        })
+
+        app.get('/two_one/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) };
+            const book = await bookCollectionThree.findOne(query);
+            res.send(book);
+        })
+
+        app.put('/two_one/:id', async (req, res) => {
+            const id = req.params.id;
+            const filter = { _id: ObjectId(id) };
+            const book = req.body;
+            const option = { upsert: true };
+            const updatedBook = {
+                $set: {
+                    image: book.image,
+                    name: book.name,
+                    book_url: book.book_url
+                }
+            }
+
+            const result = await bookCollectionThree.updateOne(filter, updatedBook, option);
             res.send(result);
         })
 
@@ -176,6 +224,32 @@ async function run() {
             res.send(result);
         })
 
+        app.get('/two_two/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) };
+            const book = await bookCollectionFour.findOne(query);
+            res.send(book);
+        })
+
+        app.put('/two_two/:id', async (req, res) => {
+            const id = req.params.id;
+            const filter = { _id: ObjectId(id) };
+            const book = req.body;
+            const option = { upsert: true };
+            const updatedBook = {
+                $set: {
+                    image: book.image,
+                    name: book.name,
+                    book_url: book.book_url
+                }
+            }
+
+            const result = await bookCollectionFour.updateOne(filter, updatedBook, option);
+            res.send(result);
+        })
+
+
+
 
 
 
@@ -197,6 +271,30 @@ async function run() {
             const query = { _id: ObjectId(id) }
             const result = await bookCollectionFive.deleteOne(query);
             console.log(result);
+            res.send(result);
+        })
+
+        app.get('/three_one/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) };
+            const book = await bookCollectionFive.findOne(query);
+            res.send(book);
+        })
+
+        app.put('/three_one/:id', async (req, res) => {
+            const id = req.params.id;
+            const filter = { _id: ObjectId(id) };
+            const book = req.body;
+            const option = { upsert: true };
+            const updatedBook = {
+                $set: {
+                    image: book.image,
+                    name: book.name,
+                    book_url: book.book_url
+                }
+            }
+
+            const result = await bookCollectionFive.updateOne(filter, updatedBook, option);
             res.send(result);
         })
 
@@ -225,6 +323,31 @@ async function run() {
             res.send(result);
         })
 
+        app.get('/three_two/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) };
+            const book = await bookCollectionSix.findOne(query);
+            res.send(book);
+        })
+
+        app.put('/three_two/:id', async (req, res) => {
+            const id = req.params.id;
+            const filter = { _id: ObjectId(id) };
+            const book = req.body;
+            const option = { upsert: true };
+            const updatedBook = {
+                $set: {
+                    image: book.image,
+                    name: book.name,
+                    book_url: book.book_url
+                }
+            }
+
+            const result = await bookCollectionSix.updateOne(filter, updatedBook, option);
+            res.send(result);
+        })
+
+
 
 
 
@@ -246,6 +369,30 @@ async function run() {
             const query = { _id: ObjectId(id) }
             const result = await bookCollectionSeven.deleteOne(query);
             console.log(result);
+            res.send(result);
+        })
+
+        app.get('/four_one/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) };
+            const book = await bookCollectionSeven.findOne(query);
+            res.send(book);
+        })
+
+        app.put('/four_one/:id', async (req, res) => {
+            const id = req.params.id;
+            const filter = { _id: ObjectId(id) };
+            const book = req.body;
+            const option = { upsert: true };
+            const updatedBook = {
+                $set: {
+                    image: book.image,
+                    name: book.name,
+                    book_url: book.book_url
+                }
+            }
+
+            const result = await bookCollectionSeven.updateOne(filter, updatedBook, option);
             res.send(result);
         })
 
@@ -272,6 +419,31 @@ async function run() {
             console.log(result);
             res.send(result);
         })
+
+        app.get('/four_two/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) };
+            const book = await bookCollectionEight.findOne(query);
+            res.send(book);
+        })
+
+        app.put('/four_two/:id', async (req, res) => {
+            const id = req.params.id;
+            const filter = { _id: ObjectId(id) };
+            const book = req.body;
+            const option = { upsert: true };
+            const updatedBook = {
+                $set: {
+                    image: book.image,
+                    name: book.name,
+                    book_url: book.book_url
+                }
+            }
+
+            const result = await bookCollectionEight.updateOne(filter, updatedBook, option);
+            res.send(result);
+        })
+
 
 
     }
