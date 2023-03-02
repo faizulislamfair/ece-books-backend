@@ -50,6 +50,7 @@ async function run() {
 
 
 
+
         app.get('/one_one', async (req, res) => {
             const query = {};
             const cursor = bookCollectionOne.find(query);
@@ -63,6 +64,16 @@ async function run() {
             const result = await bookCollectionOne.insertOne(one_one);
             res.send(result);
         })
+
+
+        app.delete('/one_one/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) }
+            const result = await bookCollectionOne.deleteOne(query);
+            console.log(result);
+            res.send(result);
+        })
+
 
 
 
