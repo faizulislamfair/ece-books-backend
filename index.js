@@ -49,6 +49,7 @@ async function run() {
         })
 
 
+
         app.get('/one_one', async (req, res) => {
             const query = {};
             const cursor = bookCollectionOne.find(query);
@@ -65,12 +66,23 @@ async function run() {
 
 
 
+
         app.get('/one_two', async (req, res) => {
             const query = {};
             const cursor = bookCollectionTwo.find(query);
             const oneTwoBooks = await cursor.toArray();
             res.send(oneTwoBooks);
         })
+
+        app.post('/one_two', async (req, res) => {
+            const one_two = req.body;
+            const result = await bookCollectionTwo.insertOne(one_two);
+            res.send(result);
+        })
+
+
+
+
 
         app.get('/two_one', async (req, res) => {
             const query = {};
@@ -79,12 +91,31 @@ async function run() {
             res.send(twoOneBooks);
         })
 
+
+        app.post('/two_one', async (req, res) => {
+            const two_one = req.body;
+            const result = await bookCollectionThree.insertOne(two_one);
+            res.send(result);
+        })
+
+
+
+
         app.get('/two_two', async (req, res) => {
             const query = {};
             const cursor = bookCollectionFour.find(query);
             const twoTwoBooks = await cursor.toArray();
             res.send(twoTwoBooks);
         })
+
+        app.post('/two_two', async (req, res) => {
+            const two_two = req.body;
+            const result = await bookCollectionFour.insertOne(two_two);
+            res.send(result);
+        })
+
+
+
 
         app.get('/three_one', async (req, res) => {
             const query = {};
@@ -93,12 +124,31 @@ async function run() {
             res.send(threeOneBooks);
         })
 
+        app.post('/three_one', async (req, res) => {
+            const three_one = req.body;
+            const result = await bookCollectionFive.insertOne(three_one);
+            res.send(result);
+        })
+
+
+
+
+
         app.get('/three_two', async (req, res) => {
             const query = {};
             const cursor = bookCollectionSix.find(query);
             const threeTwoBooks = await cursor.toArray();
             res.send(threeTwoBooks);
         })
+
+        app.post('/three_two', async (req, res) => {
+            const three_two = req.body;
+            const result = await bookCollectionSix.insertOne(three_two);
+            res.send(result);
+        })
+
+
+
 
         app.get('/four_one', async (req, res) => {
             const query = {};
@@ -107,11 +157,26 @@ async function run() {
             res.send(fourOneBooks);
         })
 
+        app.post('/four_one', async (req, res) => {
+            const four_one = req.body;
+            const result = await bookCollectionSeven.insertOne(four_one);
+            res.send(result);
+        })
+
+
+
+
         app.get('/four_two', async (req, res) => {
             const query = {};
             const cursor = bookCollectionEight.find(query);
             const fourTwoBooks = await cursor.toArray();
             res.send(fourTwoBooks);
+        })
+
+        app.post('/four_two', async (req, res) => {
+            const four_two = req.body;
+            const result = await bookCollectionEight.insertOne(four_two);
+            res.send(result);
         })
 
 
