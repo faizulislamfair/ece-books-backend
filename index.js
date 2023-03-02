@@ -56,6 +56,15 @@ async function run() {
             res.send(oneOneBooks);
         })
 
+
+        app.post('/one_one', async (req, res) => {
+            const one_one = req.body;
+            const result = await bookCollectionOne.insertOne(one_one);
+            res.send(result);
+        })
+
+
+
         app.get('/one_two', async (req, res) => {
             const query = {};
             const cursor = bookCollectionTwo.find(query);
