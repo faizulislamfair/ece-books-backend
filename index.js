@@ -31,6 +31,8 @@ async function run() {
 
         const adminAccounts = client.db('eceBooks').collection('admins');
 
+        const contributionCollection = client.db('eceBooks').collection('contributions');
+
 
 
         app.get('/admins', async (req, res) => {
@@ -40,12 +42,17 @@ async function run() {
             res.send(admins);
         })
 
-
         app.get('/admins/:email', async (req, res) => {
             const email = req.params.email;
             const query = { email };
             const user = await adminAccounts.findOne(query);
             res.send({ isAdmin: user?.role === 'Admin' });
+        })
+
+        app.post('/contributions', async (req, res) => {
+            const contribute = req.body;
+            const result = await contributionCollection.insertOne(contribute);
+            res.send(result);
         })
 
 
